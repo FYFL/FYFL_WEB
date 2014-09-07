@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<style type="text/css">
+th {
+  width: 200px;
+  height: 50px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+td {
+  width:400px;
+  height: 50px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background: lightblue;
+  border-color: white;
+}
+body {
+  padding: 5px;
+}
+
+textarea{
+	height:40px;
+}
+</style>
+</head>
+
+<body>
+click on the content then you are able to edit it.
+<table>
+  <tr>
+    <th>Badge Name:</th>
+    <td><div id="badge_name" name="badge_name" class="editdiv"></div></td>
+  </tr>
+  <tr>
+    <th>Badge Description:</th>
+    <td><div id="badge_desc" name="badge_desc" class="editdiv"></div></td>
+  </tr>
+</table>
+<button id="status" class="creatbutton" onclick="approval()"></button>
+
+
+<script type="text/javascript">
+var editableText = $("<textarea />");
+function divClicked() {
+    var divHtml = $(this).html();
+    var editableText = $("<textarea id='"+$(this).attr('id')+"' />");
+    editableText.val(divHtml);
+    $(this).replaceWith(editableText);
+    editableText.focus();
+    // setup the blur event for this new textarea
+    editableText.blur(editableTextBlurred);
+}
+function editableTextBlurred() {	
+	
+    var html = $(this).val();
+    var viewableText = $("<div id='"+$(this).attr('id')+"'>");
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+    $(viewableText).click(divClicked);
+    
+	//Jesse's JavaScript
+	parent.badgeObj[parent.current][$(this).attr('id')]=html;
+	//End Jesse's JavaScript
+}
+$("div").click(divClicked);
+//Jesse's JavaScript
+function printBadgeObject()
+{
+	document.getElementById("badge_name").innerHTML=parent.badgeObj[parent.current].badge_name;
+	document.getElementById("badge_desc").innerHTML=parent.badgeObj[parent.current].badge_desc;
+	document.getElementById("status").innerHTML=parent.badgeObj[parent.current].status=="A"?"Disapprove":"Approve";
+}printBadgeObject();
+function approval()
+{
+	if(parent.badgeObj[parent.current].status=="U")
+		parent.badgeObj[parent.current].status="A";
+	else
+		parent.badgeObj[parent.current].status="U";
+	document.getElementById("status").innerHTML=parent.badgeObj[parent.current].status=="A"?"Disapprove":"Approve";
+}
+//save currently selected badge to database
+function saveBadgeObject(p1)
+{
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.open("POST","php/UpdateBadge.php",false);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send
+	(
+		"badge_name="+parent.badgeObj[p1].badge_name
+		+"&badge_desc="+parent.badgeObj[p1].badge_desc
+		+"&status="+parent.badgeObj[p1].status
+		+"&image_id="+parent.badgeObj[p1].image_id
+	);
+	updateBadge(p1);
+}
+$(window).unload(function(){saveBadgeObject(parent.current);});
+//End Jesse's JavaScript
+</script>
+</body>
+</html>

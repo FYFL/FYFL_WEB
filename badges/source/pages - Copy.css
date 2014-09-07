@@ -1,0 +1,424 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: rocks;
+	src: url('font/CabinCondensed-Bold.ttf');
+}
+a { text-decoration: none;
+}
+
+#header{
+	color:#000;
+	font-size:24px;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:130px;
+	background:#66595D;
+	z-index:9;
+	border-bottom: 1px solid #dadada;
+}
+
+#headercircle{
+	position: fixed;
+	left:6%;
+	top:5px;
+	border-radius:80px;
+	-webkit-border-radius:80px;
+	-moz-border-radius:80px;
+	height:160px;
+	width:160px;
+	background:rgba(135,187,125,1.0);
+	z-index:10;
+}
+
+#headercircle img{
+	margin:50px 10px;
+}
+
+#colorfulstrip{
+		height:30px;
+		width:100%;
+		background-image:url(images/colorfulstrip.png);
+		background-y-size:cover;
+		z-index:99;
+	}
+
+#loggedin{
+	position:relative;
+	float:right;
+	margin: 1% 10% 0 0;
+}
+
+#loggedin img{
+	margin-right:10px;
+}
+
+#loggedin span{
+	position:absolute;
+	top:0%;	
+}
+
+.profileselect{
+	position:relative;
+	float:right;
+	margin:65px -12% 0 0;
+}
+
+#menu{
+	position:absolute;
+	top:5px;
+	right:0px;
+	height:100px;
+	float:left;
+	padding:0;
+	list-style:none;
+	overflow:hidden;
+	z-index:55;
+}
+
+#menupic{
+	width:55px;
+	height:55px;	
+	margin:22px 12px 42px 12px;
+	opacity:0.8;
+}
+
+#menu li{
+	width:80px;
+	height:225px;
+	top:0px;
+	float:left;
+	font-size:20px;
+	
+}
+
+#menu li a{
+	display:block;
+	padding:4px 2%;
+	text-decoration:none;
+	text-align:center;
+	color:#484848;
+}
+
+.myBadges{
+	background:#CCEFE1;
+}
+.myBadges div#menupic{
+	background: url(images/user/paperstar32.png);
+	background-size:cover;	
+}
+.earner {
+	background:#E09DB1;
+}
+.earner div#menupic{
+	background: url(images/user/users32.png);
+	background-size:cover;	
+}
+.badgeManager{
+	background:#99D5D8;
+}
+.badgeManager div#menupic{
+	background: url(images/user/bag32.png);
+	background-size:cover;	
+}
+.password{
+	background:#8DC9BC;
+}
+.password div#menupic{
+	background: url(images/user/contactcard32.png);
+	background-size:cover;	
+}
+
+.logout{
+	background:#919191;
+}
+.logout div#menupic{
+	background: url(images/user/plug32.png);
+	background-size:cover;	
+	margin:22px 12px 52px 12px;
+}
+
+
+#badgecontent{
+	position:absolute; 
+	top:180px;
+	left:5%;
+	bottom:-15%;
+}
+
+#usercontent{
+	position:absolute; 
+	top:170px;
+	left:170px;
+	bottom:-15%;
+}
+
+#badgecards{
+	margin:50px 0;
+}
+
+ul#badgecards li { 
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    float: left; }
+	
+#adminbadgecards{
+	margin: 100px 0 ;
+}
+	
+ul#adminbadgecards li { 
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+	padding-top: 5%;
+    float: left; 
+}
+	
+.badgecard { 
+    position: relative;
+    width: 200px;
+	height: 300px; 
+	margin: 0 auto; 
+	margin: 20px; 
+	border-style: solid;
+	border-width: 8px 1px 1px 2px;
+	border-color: blue #eee #eee #eee;
+	background-color: #eee;
+	-webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+	 -moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2); 
+	 box-shadow: 4px 4px 4px rgba(0,0,0,0.2); 
+	 -webkit-transition: all 0.5s ease-out; 
+	 -moz-transition: all 0.5s ease; 
+	 -o-transition: all 0.5s ease;
+
+	 } 
+ 
+.badgecard img{
+	width: 100px;
+	height: 100px;
+	margin:20px 50px 0 50px;	
+}
+
+.badgefooter{
+	background-color:#ccd;
+	height: 30px;
+	width:200px;
+	position: absolute;
+	top:270px;
+	left:0px;
+	text-align:center;
+}
+
+.badgefooter:hover{
+	cursor: pointer;
+	background:#ccc;
+}
+
+.badgetitle{
+	width:200px;
+	position: absolute;
+	top: 140px;
+	left: 0px;
+	text-align: center;
+}
+
+.badgedescription{
+	width:180px;
+	margin: 0 10px 0 10px;
+	position: absolute;
+	top: 180px;
+	left:0px;
+	text-align: center;
+	font-size:12px;
+}
+
+
+.ribbon-wrapper {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 15px;
+  width: 120px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  color: #000;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon:before {
+  left: 0;
+}
+.ribbon:after {
+  right: 0;
+}
+
+.creatbutton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+	background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52');
+	background-color:#b8e356;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:3px;
+	border:1px solid #83c41a;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:23px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:40px;
+	width: 50%;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0px 1px 0px #86ae47;
+	margin:2% 0 2% 20%;
+}
+.creatbutton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356) );
+	background:-moz-linear-gradient( center top, #a5cc52 5%, #b8e356 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
+	background-color:#a5cc52;
+}
+.creatbutton:active {
+	position:relative;
+	top:1px;
+}
+
+#filter{
+	position:absolute;
+	width:100%;
+	margin:auto;
+}
+
+.tftextinput, .selector{
+		margin: 0;
+		padding: 5px 0px 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #b8e356;; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #b8e356;; border-right:0px;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+	    background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+	    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52');
+	    background-color:#b8e356;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #007ead;
+		background-color:#b8e356;
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	
+	#filterone, #filtertwo, #tfbadgesearch{
+		float:right;
+		margin:0 3% 0 0;
+	}
+	
+	
+	/*creatNewBaddge page*/
+	#creatNew{
+		position:relative;
+		height:500px;
+		width:800px;
+	}
+	
+	/* youth badge earner table*/
+table, td{
+	font:100% Arial, Helvetica, sans-serif; 
+}
+table{width:100%;border-collapse:collapse;margin: auto;}
+th, td{text-align:left;padding:5px 80px 5px 70px;border:1px solid #ABD8CB;}
+th{background:rgba(135,187,125,1.0) repeat-x;color:#fff;}
+td{background:#e5f1f4;}
+
+.avatar img { 
+  -webkit-border-radius: 3px; 
+  -moz-border-radius: 3px; 
+  border-radius: 3px; 
+  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.44);
+  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.44);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.44);
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+.earnernm{
+	position: relative;
+	top:-20px;
+	left:10px;
+}
+
+

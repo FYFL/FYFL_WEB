@@ -1,0 +1,404 @@
+@font-face {
+	font-family: bebas;
+	src: url('../font/Pacifico.ttf');
+}
+
+@font-face {
+	font-family: title;
+	src: url('../font/CollegiateBlackFLF.ttf');
+}
+
+@font-face{
+	font-family: bebas;
+	src:url('../font/BebasNeue.otf');
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	background: #fff;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 24px;
+	line-height: 1.5;
+}
+
+
+.background {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: -moz-radial-gradient(50% 50%, farthest-side, #fff, #efefef);
+	background: -webkit-gradient(radial, 50% 50%, 250, 50% 50%, 750, from(#fff), to(#bbb));
+	z-index: 0;
+}
+
+.words{
+	font-family: "Times New Roman", Times, serif;
+	font-size:22px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	
+}
+
+h1{
+	font-size:30px;
+	font-family:bebas;
+}
+
+h2{
+	font-size:50px;
+	font-family:bebas;
+}
+
+h3, span{
+	font-family:bebas;
+	font-size:30px;
+}
+
+li {
+	font-weight: 400;
+	font-size: 36px;
+}
+
+a{
+	text-decoration:none;
+	color:rgba(255,85,56,1.0);
+}
+
+#header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background:rgba(135,187,125,1.0);
+	border-bottom: solid 3px #bbb;
+}
+
+#header:hover {
+	opacity: .9;
+}
+
+#header h1 {
+	font-size: 1px;
+	float:right;
+	margin-right:40px;
+}
+
+#headercircle{
+	position: fixed;
+	top: -30px;
+	right: 45px;
+	height:140px;
+	width:140px;
+	border-radius:70px;
+	-webkit-border-radius:70px;
+	-moz-border-radius:70px;
+	background:#FFF;
+	z-index:10;
+}
+
+#headercircle img{
+	margin:50px 0 0 0;
+}
+
+#nav {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+
+.nav-button {
+	float: left;
+	padding: 10px;
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+	font-style: normal;
+	font-weight:bolder;
+}
+
+a.nav-button:hover {
+	color: #000;
+}
+
+#album{
+	margin-top:-55px;
+	position:absolute;
+	width:100%;
+	height:60%;
+}
+
+#headertitle{
+	margin-top:-55px;
+	position:absolute;
+	left:5%;
+	width:35%;
+	height:500px;
+	background:rgba(127,151,127,0.85);  	
+	z-index:2;
+}
+
+#geninfo{
+	margin-top:80px;
+	width:70%;
+	position:absolute;
+	top:60%;
+	left:15%;
+	z-index:3;
+}
+
+#login{
+	position: absolute;
+	margin: 0;
+	width: 100%;
+	height:0;
+	padding: 100px 0 200px;
+}
+
+#overview{
+	margin: 0;
+	width: 100%;
+	padding: 100px 0 200px;
+	background:rgba(0,127,14,0.3);
+	color:#fff;
+	z-index:3;
+	line-height: 1.6;
+	padding:0 0 0 10px;
+	height:0;
+}
+
+#badge{
+	position: absolute;
+	margin: 0;
+	width: 100%;
+	padding: 100px 0 200px;
+	background-image:url(../images/greyback.png);
+	background-repeat:repeat;
+	height:0;
+}
+
+#overviewsection{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:20px;
+	width:100%;
+	background-color:#E8E8E8;
+}
+
+.overleft{
+	width:35%;
+	float:left;
+	margin: 50px 2% 0 13%;
+	line-height:28px;
+	
+}
+
+#overright{
+	width:35%;
+	float:left;
+	margin: 50px 13% 0 2%;
+	line-height:28px;
+}
+
+#badge #overviewsection{
+	margin-top:-80px;
+}
+
+.or-block {
+	display: block;
+}
+
+#adminlogin{
+}
+.loginbutton{
+	width:130px;
+	height:40px;
+	border:2px solid #fff; 
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	font-size:18px;
+	margin:auto;
+	margin-top:10px;
+	padding: 20px 25px;
+	text-align:center;
+}
+
+
+.loginbutton:hover{
+	background:rgba(255,255,255,0.4);
+	cursor:pointer;
+}
+
+.loginbutton a{
+	color:white;
+}
+
+.loginbutton:hover a{
+	color: rgba(255,85,56,1.0);
+	font-size: 18px;
+}
+
+.ribbon-wrapper {
+  width: 145px;
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 17px Sans-Serif;
+  color: #fff;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0px;
+  left: 0px;
+  top: 35px;
+  width: 250px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFB649), to(#FF6A00)); 
+  background-image: -webkit-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:    -moz-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:     -ms-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:      -o-linear-gradient(top, #FFB649, #FF6A00); 
+  color: #000;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon:before {
+  left: 0;
+}
+.ribbon:after {
+  right: 0;
+}
+
+.triangle{
+	width:0px;
+	height:0px;
+	border-bottom: 120px solid rgba(255,85,56,0.8);
+	border-left:120px solid transparent;
+}
+
+#resource{
+	position:fixed;
+	right:0px;
+	bottom:0px;
+	z-index:6;
+}
+
+#resourcelink{
+	width:120px;
+	position:fixed;
+	right:-20px;
+	bottom:10px;
+	z-index:7;
+	-webkit-transform: rotate(-45deg); 
+	 -moz-transform: rotate(-45deg); 
+	 -o-transform: rotate(-45deg);
+	 font-size:17px;
+	 font-weight:bolder;
+	 text-align:center;
+	 color:#FFF;	 
+}
+
+
+/* BASE-REM SIZING  */
+@media (min-width: 1906px) {
+	span{
+		font-size:54px;
+	}
+
+}
+
+@media (min-width: 1604px) {
+	span{
+		font-size:45px;
+	}
+
+}
+
+@media (max-width: 1400px) {
+	html {
+		font-size: 11px;
+	}
+}
+
+/* target screen width  */
+
+
+@media (max-width: 1280px) {
+	html {
+		font-size: 10px;
+	}
+}
+	
+@media (max-width: 1160px) {
+	html {
+		font-size: 9px;
+	}
+}
+	
+@media (max-width: 1040px) {
+	html {
+		font-size: 8px;
+	}
+}
+	
+@media (max-width: 920px) {
+	html {
+		font-size: 7px;
+	}
+}
+	
+@media (max-width: 800px) {
+	html {
+		font-size: 6px;
+	}
+}
+	
+@media (max-width: 680px) {
+	html {
+		font-size: 5px;
+	}
+}
+	
+@media (max-width: 560px) {
+	html {
+		font-size: 4px;
+	}
+}
+	
+@media (max-width: 440px) {
+	html {
+		font-size: 3px;
+	}
+}
+
+@media (max-width: 320px) {
+	html {
+		font-size: 3px;
+	}
+}
