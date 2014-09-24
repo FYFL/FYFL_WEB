@@ -7,12 +7,12 @@
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 @font-face {
 	font-family: open-sans;
-	src: url('../fonts/open_sans/OpenSans-Regular.TTF');
+	src: url('../fonts/open_sans/OpenSans-Regular.ttf');
 }
 
 html {
   font-family: open-sans;
-  src: url('../fonts/open_sans/OpenSans-Regular.TTF');
+  src: url('../fonts/open_sans/OpenSans-Regular.ttf');
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
