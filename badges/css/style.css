@@ -127,6 +127,16 @@ a.nav-button:hover {
 	color: #000;
 }
 
+.nav-link {
+	float: left;
+	padding: 10px;
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+	font-style: normal;
+	font-weight:bolder;
+}
+
 #album{
 	margin-top:-55px;
 	position:absolute;
