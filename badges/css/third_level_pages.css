@@ -199,6 +199,10 @@ a.nav-button:hover {
 	padding-right: 20%;
 }
 
+#accordion{
+	padding-left: 5%;
+	padding-right: 5%;
+}
 #bottom{
 	left:0;
 	bottom: 5%;
