@@ -186,6 +186,7 @@ optgroup {
   font-weight: bold;
 }
 table {
+font-family: open-sans;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -1002,7 +1003,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
+  font-family: open-sans;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
@@ -4117,11 +4118,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #000;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: #000;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
