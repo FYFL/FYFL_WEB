@@ -46,33 +46,56 @@
 		$("#nationwide").click(function(){generateForm(1);return false});
 		function generateForm(p1)
 		{
-			var output='<form action="MakeBadge.php"method="post"enctype="multipart/form-data">';
-			xmlhttp=new XMLHttpRequest();
-			xmlhttp.onreadystatechange=function()
-			{
-				if(xmlhttp.readyState==4&&xmlhttp.status==200)
-				{
-					output+=xmlhttp.responseText;
-				}
-			}
+			var output='<form action="php/MakeBadge.php"method="post"enctype="multipart/form-data">';
 			if((p1&2)==2)
 			{	
-				output+='<label>State Abbreviation</label><br><br><select name="state" id="state" onchange="changeState(this.value)">';
-				xmlhttp.open("GET","php/Statewide.php",false);
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function()
+				{
+					if(xmlhttp.readyState==4&&xmlhttp.status==200)
+					{
+						output+='<label>State Abbreviation</label><br><br><select name="state" id="state" onchange="changeState(this.value)">';
+						states=jQuery.parseJSON(xmlhttp.responseText);
+						for(var i in states)
+							output+='<option value="'+states[i]+'">'+states[i]+'</option>';
+						output+='</select><br><br>';
+					}
+				}
+				xmlhttp.open("GET","php/GetStates.php",false);
 				xmlhttp.send();
-				output+='</select><br><br>';
 			}
 			if((p1&4)==4)
 			{
-				output+='<label>County Name</label><br><br><select name="county" id="county">';
-				xmlhttp.open("GET","php/Countywide.php?s=AK",false);
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function()
+				{
+					if(xmlhttp.readyState==4&&xmlhttp.status==200)
+					{
+						output+='<label>County Name</label><br><br><select name="county" id="county">';
+						counties=jQuery.parseJSON(xmlhttp.responseText);
+						for(var i in counties)
+							output+='<option value="'+counties[i][0]+'">'+counties[i][1]+'</option>';
+						output+='</select><br><br>';
+					}
+				}
+				xmlhttp.open("GET","php/GetCounties.php?s=AK",false);
 				xmlhttp.send();
-				output+='</select><br><br>';
 			}
 			if((p1&1)==1)
 			{	
-				output+='<label>Academic Category</label><br><br><select name="category_id" id="category_id">';
-				xmlhttp.open("GET","php/Nationwide.php",false);
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function()
+				{
+					if(xmlhttp.readyState==4&&xmlhttp.status==200)
+					{
+						output+='<label>Academic Category</label><br><br><select name="category_id" id="category_id">';
+						categories=jQuery.parseJSON(xmlhttp.responseText);
+						for(var i in categories)
+							output+='<option value="'+categories[i][0]+'">'+categories[i][1]+'</option>';
+						output+='</select><br><br>';
+					}
+				}
+				xmlhttp.open("GET","php/GetCategories",false);
 				xmlhttp.send();
 				output+=
 				'\
@@ -94,9 +117,14 @@
 			xmlhttp.onreadystatechange=function()
 			{
 				if(xmlhttp.readyState==4&&xmlhttp.status==200)
-					document.getElementById("county").innerHTML=xmlhttp.responseText;
+				{
+					document.getElementById("county").innerHTML="";
+					counties=jQuery.parseJSON(xmlhttp.responseText);
+					for(var i in counties)
+						document.getElementById("county").innerHTML+='<option value="'+counties[i][0]+'">'+counties[i][1]+'</option>';
+				}
 			}
-			xmlhttp.open("GET","php/Countywide.php?s="+p1,false);
+			xmlhttp.open("GET","php/GetCounties.php?s="+p1,false);
 			xmlhttp.send();
 		}
 		var designerWindow;

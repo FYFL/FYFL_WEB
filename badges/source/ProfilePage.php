@@ -1,8 +1,18 @@
+<?PHP
+require_once("php/include/membersite_config.php");
+
+if(!$fgmembersite->CheckLogin())
+{
+    $fgmembersite->RedirectToURL("login.php");
+    exit;
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="php/DatabaseToolkit.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
 <link rel="stylesheet" href="pass.css"/>
 <link rel="import" href="menu.html">
@@ -128,18 +138,14 @@ body{
         <div class="colum"><span class="columtitle">Group Membership:</span><span class="columreturn">4=gh robotics club</span></div>
       </div>
       <div id="tabpage_2">
-	<form action="EditUser.php" method="post">
+	<form action="php/EditUser.php" method="post">
         <div class="required">First Name</div> <input name="name" type="text">
         <div class="required">Last Name</div><input name="lname" type="text">
         <div class="required">State</div><select id="StateSelect" name="State" onchange="countySelection(this.value);"></select>
         <div class="required">County</div><select id="CountySelect" name="County"></select>
-        <div>Current password</div><input type="text">
-        <p class="clues">Enter your current password to change the E-mail address or Password.</p>
         <div class="required">Email</div><input name="email" type="text">
         <p class="clues">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</p>
-        <div>Password</div><input type="text">
-        <div>Comfirm Password</div><input type="text">
-        <p class="clues">To change the current user password, enter the new password in both fields.</p>
+        <a href="reset-pwd-req.php">reset password</a>
         <div class="required">Terms & Conditions</div>
         <textarea readonly>By accepting these Terms and Conditions for using the 4-H Digital Badge System as a general user, you agree to the terms set forth herein. As a General User you register as a Youth or Adult. If you register as a Youth you will be able to see badges designed for youth and will also see other Terms and Conditions for using the system as a Youth. To Earn a badge you as a youth you must be assigned as a member of a group. This group is either a club with an assigned Adult Leader or a group a local University or Extension Staff Person moderates. 
 IMPORTANT: As a youth you must contact the local University or Extension staff or an Adult Leader in order to be assigned to a group and earn badges.
@@ -224,8 +230,6 @@ $(document).ready(function(){
 		 $("#tabInner #tabpage_3").css('display','block');
 		
 	});
-	
-	//This may be for the menu roll overs.
 	$("#menu > li").bind('mouseenter',function(){
 		 var $elem = $(this);
 		 $elem.stop(true)
@@ -308,7 +312,7 @@ function loadUserInfo()
 			userInfo=jQuery.parseJSON(xmlhttp.responseText);
 		}
 	}
-	xmlhttp.open("GET","UserInfo.php",false);
+	xmlhttp.open("GET","php/UserInfo.php",false);
 	xmlhttp.send();
 }loadUserInfo();
 //print user info from userInfo object
@@ -328,33 +332,42 @@ function printUserInfo()
 function stateSelection()
 {
 	document.getElementById("StateSelect").innerHTML='<option value=""selected="selected">change state</option>';
+	var states;
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
+		if(xmlhttp.status==404)
+			document.getElementById("CountySelect").innerHTML='<option value="">404 ERROR</option>';
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
-			document.getElementById("StateSelect").innerHTML+=xmlhttp.responseText;
+			states=jQuery.parseJSON(xmlhttp.responseText);
+			for(var i in states)
+				document.getElementById("StateSelect").innerHTML+='<option value="'+states[i]+'">'+states[i]+'</option>';
 		}
 	}
-	xmlhttp.open("GET","php/Statewide.php",false);
+	xmlhttp.open("GET","php/GetStates.php",false);
 	xmlhttp.send();
 }stateSelection();
 //populate county select when state is chosen
 function countySelection(p1)
 {
 	document.getElementById("CountySelect").innerHTML='<option value=""selected="selected">change county</option>';
-	if(p1!='')
+	var counties;
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
 	{
-		xmlhttp=new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function()
+		if(xmlhttp.status==404)
+			document.getElementById("CountySelect").innerHTML='<option value="">404 ERROR</option>';
+		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
-			if(xmlhttp.readyState==4&&xmlhttp.status==200)
-				document.getElementById("CountySelect").innerHTML+=xmlhttp.responseText;
+			counties=jQuery.parseJSON(xmlhttp.responseText);
+			for(var i in counties)
+				document.getElementById("CountySelect").innerHTML+='<option value="'+counties[i][0]+'">'+counties[i][1]+'</option>';
 		}
-		xmlhttp.open("GET","php/Countywide.php?s="+p1,false);
-		xmlhttp.send();
 	}
-}countySelection('');
+	xmlhttp.open("GET","php/GetCounties.php?s="+p1,false);
+	xmlhttp.send();
+}countySelection();
 //End Jesse's JavaScript
 </script>
 </body>

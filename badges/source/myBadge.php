@@ -68,7 +68,7 @@ function getBadges()
 			printBadges();
 		}
 	}
-	xmlhttp.open("GET","MyBadges.php",true);
+	xmlhttp.open("GET","php/MyBadges.php",true);
 	xmlhttp.send();
 }getBadges();
 function printBadges()

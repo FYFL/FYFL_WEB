@@ -100,7 +100,7 @@ function saveBadgeObject(p1)
 		+"&status="+parent.badgeObj[p1].status
 		+"&image_id="+parent.badgeObj[p1].image_id
 	);
-	updateBadge(p1);
+	parent.updateBadge(parent.badgeObj[parent.current]);
 }
 $(window).unload(function(){saveBadgeObject(parent.current);});
 //End Jesse's JavaScript

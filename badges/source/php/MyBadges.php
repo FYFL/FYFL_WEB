@@ -1,4 +1,5 @@
 <?php
+	require_once(__DIR__ . "/include/membersite_config.php");
 	$dbc=@mysqli_connect('fyfl-3.fyflnetwork.org','szk0050','Stoneware!','FYFL-3')
 	or die('Could not connect to MySQL: '.mysqli_connect_error());
 	if(!$fgmembersite->CheckLogin())

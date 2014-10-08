@@ -2,7 +2,7 @@
 /*Get badges from database and filter by search parameters to echo as
  *json object.
  */
-	include("tags.php");
+	require_once("tags.php");
 	$dbc=@mysqli_connect('fyfl-3.fyflnetwork.org','szk0050','Stoneware!','FYFL-3')or die 
 	('Could not connect to MySQL: ' . mysqli_connect_error());
 	$badges=getBadgesFromTags($_POST['tag']);

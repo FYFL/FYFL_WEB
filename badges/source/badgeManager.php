@@ -1,5 +1,5 @@
 <?PHP
-require_once("./include/membersite_config.php");
+require_once("php/include/membersite_config.php");
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -13,8 +13,8 @@ if(!$fgmembersite->CheckLogin())
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="php/DatabaseToolkit.js"></script>
 <link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
 <link rel="stylesheet" type="text/css" href="pages.css" />
 <link rel="stylesheet" type="text/css" href="speech bubble.css">
@@ -165,33 +165,42 @@ $(document).ready(function(){
 function stateSelection()
 {
 	document.getElementById("stateFilter").innerHTML='<option value="ALL"selected="selected">all states</option>';
+	var states;
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
+		if(xmlhttp.status==404)
+			document.getElementById("stateFilter").innerHTML='<option value="">404 ERROR</option>';
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
-			document.getElementById("stateFilter").innerHTML+=xmlhttp.responseText;
+			states=jQuery.parseJSON(xmlhttp.responseText);
+			for(var i in states)
+				document.getElementById("stateFilter").innerHTML+='<option value="'+states[i]+'">'+states[i]+'</option>';
 		}
 	}
-	xmlhttp.open("GET","php/Statewide.php",false);
+	xmlhttp.open("GET","php/GetStates.php",false);
 	xmlhttp.send();
 }stateSelection();
 //populate county select when state is chosen
 function countySelection(p1)
 {
 	document.getElementById("countyFilter").innerHTML='<option value="ALL"selected="selected">all counties</option>';
-	if(p1!="ALL")
+	var counties;
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
 	{
-		xmlhttp=new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function()
+		if(xmlhttp.status==404)
+			document.getElementById("countyFilter").innerHTML='<option value="">404 ERROR</option>';
+		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
-			if(xmlhttp.readyState==4&&xmlhttp.status==200)
-				document.getElementById("countyFilter").innerHTML+=xmlhttp.responseText;
+			counties=jQuery.parseJSON(xmlhttp.responseText);
+			for(var i in counties)
+				document.getElementById("countyFilter").innerHTML+='<option value="'+counties[i][0]+'">'+counties[i][1]+'</option>';
 		}
-		xmlhttp.open("GET","php/Countywide.php?s="+p1,false);
-		xmlhttp.send();
 	}
-}countySelection("ALL");
+	xmlhttp.open("GET","php/GetCounties.php?s="+p1,false);
+	xmlhttp.send();
+}countySelection();
 //array of badge objects and currently selected badge
 var badgeObj;
 var current;
