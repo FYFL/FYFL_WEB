@@ -1,0 +1,196 @@
+@font-face {
+	font-family: bebas;
+	src: url('../font/Pacifico.ttf');
+}
+
+@font-face {
+	font-family: title;
+	src: url('../font/CollegiateBlackFLF.ttf');
+}
+
+@font-face{
+	font-family: bebas;
+	src:url('../font/BebasNeue.otf');
+}
+
+html {
+	font-size: 10px;
+}
+
+table{
+    
+}
+
+
+.background {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: -moz-radial-gradient(50% 50%, farthest-side, #fff, #efefef);
+	background: -webkit-gradient(radial, 50% 50%, 250, 50% 50%, 750, from(#fff), to(#bbb));
+	z-index: 0;
+}
+
+.words{
+	font-size:22px;
+}
+
+.container-inner-sections {
+	border: 1px;
+	border-radius: 10px;
+	background-image:url(../images/greyback.png);
+}
+
+.container-right-sections {
+	border: 1px;
+	border-radius: 10px;
+	background-image:url(../images/greyback.png);
+	height: 350px;
+	position: fixed;
+}
+
+#header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background:rgba(135,187,125,1.0);
+	border-bottom: solid 3px #bbb;
+}
+
+/* #header:hover {
+	opacity: .9;
+}
+ */
+#header h1 {
+	font-size: 1px;
+	float:right;
+	margin-right:40px;
+}
+
+#headercircle{
+	position: fixed;
+	top: -30px;
+	right: 2%;
+	height:140px;
+	width:140px;
+	border-radius:70px;
+	-webkit-border-radius:70px;
+	-moz-border-radius:70px;
+	background:#FFF;
+	
+}
+
+#headercircle img{
+	margin:50px 0 0 0;
+}
+
+#nav {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+
+#navStyle{
+	font-size: 18px;
+	font-style: normal;
+	font-weight: bolder;
+}
+
+#returnToTop{
+	float: right;
+	padding-right: 5%;
+	color: black;
+}
+
+.nav-button {
+	float: left;
+	padding: 10px;
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+	font-style: normal;
+	font-weight:bolder;
+}
+
+a.nav-button:hover {
+	color: #000;
+}
+
+.nav-button a ul:hover {
+	display: block; 
+	position: absolute;
+	color: #000;
+}
+
+#headertitle{
+	margin-top:-55px;
+	position:absolute;
+	left:5%;
+	width:35%;
+	height:500px;
+	background:rgba(127,151,127,0.85);  	
+	z-index:2;
+}
+
+#backgroundColor{
+	background-color: rgba(135,187,125,1.0);
+}
+
+.overleft{
+	width:35%;
+	float:left;
+	margin: 50px 2% 0 13%;
+	line-height:28px;
+	
+}
+
+#overright{
+	width:35%;
+	float:left;
+	margin: 50px 13% 0 2%;
+	line-height:28px;
+}
+
+
+
+#odd{
+	width: 100%;
+	background-image:url(../images/greyback.png);
+	background-repeat:repeat;
+	padding-bottom: 75px;
+}
+
+#even{
+	width: 100%;
+	background: rgba(135,187,125,1.0);
+	padding-bottom: 75px;
+	
+}
+
+
+#glyph{
+	
+}
+
+#padding{
+	padding-left: 20%;
+	padding-right: 20%;
+}
+
+#accordion{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+#bottom{
+	left:0;
+	bottom: 5%;
+	width:80%;
+	margin: 0 10%;
+	border-top:dotted 3px #999;
+	font-color:#666;
+	font-size:16px;
+}
+
+

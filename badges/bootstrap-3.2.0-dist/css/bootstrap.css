@@ -275,7 +275,7 @@ th {
 }
 .glyphicon {
   position: relative;
-  top: 1px;
+  top: .5px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
@@ -3936,6 +3936,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav {
   margin: 7.5px -15px;
+  font-size: 20px
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -3987,6 +3988,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
+	padding-right: 20%
   }
 }
 .navbar-form {
@@ -6212,3 +6214,5 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+body { padding-top: 70px; }
