@@ -1,5 +1,5 @@
 <?PHP
-require_once("php/include/membersite_config.php");
+require_once("./include/membersite_config.php");
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -11,16 +11,24 @@ if(!$fgmembersite->CheckLogin())
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../css/admin_level.css" type="text/css">
+<link rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="../bootstrap-3.2.0-dist/css/bootstrap-theme.css" type="text/css">
+<script src="../js/jquery-1.8.2.min.js"></script>
+<script src="../bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+<script src="../bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<script src="../bootstrap-3.2.0-dist/bootstrap-hover-dropdown-master/bootstrap-hover-dropdown.min.js"></script>
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.5"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="php/DatabaseToolkit.js"></script>
-<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+<!--link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" /-->
 <link rel="stylesheet" type="text/css" href="pages.css" />
 <link rel="stylesheet" type="text/css" href="speech bubble.css">
-<title>Badge Manager</title>
-<style type="text/css">
+<title>Browse Badges</title>
 
+<style type="text/css">
+<!--
 body{
 	background: #F3F3F3;
     font-family:Arial;
@@ -50,7 +58,7 @@ body{
 	font-size:20px;
 	
 }
-
+-->
 .createbtn {
 	background-color:#666;
 	-webkit-border-top-left-radius:10px;
@@ -93,6 +101,43 @@ body{
 
 </style>
 </head>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
+<div class="container">
+<!-- Brand and toggle get grouped for better mobile display -->
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse">
+<ul class="nav navbar-nav">
+<li><a href="" >Home</a></li>
+<li class="dropdown">
+<a href="" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Badges<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="" >View Badges</a></li>
+<li><a href="" >Approve Badges</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Users<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="" >Manage Users</a></li>
+<li><a href="" >Check User Badges</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+<li class="dropdown">
+<a href="" title="Settings" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="">Setting Stuff</a></li>
+</ul>
+</li>
+<li><a href="" id="glyph" title="Logout"><span class="glyphicon glyphicon-log-out"></a></li>
+</ul>
+</div><!-- /.navbar-collapse -->
+<a href="" class="hidden-xs hidden-sm"> <div id="headercircle"><img src="../images/FYFLnew.png" height="50"/></div></a>
+</div><!-- /.container-fluid -->
+</nav>
 
 <body>
 <?php
@@ -165,42 +210,33 @@ $(document).ready(function(){
 function stateSelection()
 {
 	document.getElementById("stateFilter").innerHTML='<option value="ALL"selected="selected">all states</option>';
-	var states;
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
-		if(xmlhttp.status==404)
-			document.getElementById("stateFilter").innerHTML='<option value="">404 ERROR</option>';
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
-			states=jQuery.parseJSON(xmlhttp.responseText);
-			for(var i in states)
-				document.getElementById("stateFilter").innerHTML+='<option value="'+states[i]+'">'+states[i]+'</option>';
+			document.getElementById("stateFilter").innerHTML+=xmlhttp.responseText;
 		}
 	}
-	xmlhttp.open("GET","php/GetStates.php",false);
+	xmlhttp.open("GET","php/Statewide.php",false);
 	xmlhttp.send();
 }stateSelection();
 //populate county select when state is chosen
 function countySelection(p1)
 {
 	document.getElementById("countyFilter").innerHTML='<option value="ALL"selected="selected">all counties</option>';
-	var counties;
-	xmlhttp=new XMLHttpRequest();
-	xmlhttp.onreadystatechange=function()
+	if(p1!="ALL")
 	{
-		if(xmlhttp.status==404)
-			document.getElementById("countyFilter").innerHTML='<option value="">404 ERROR</option>';
-		if(xmlhttp.readyState==4&&xmlhttp.status==200)
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
 		{
-			counties=jQuery.parseJSON(xmlhttp.responseText);
-			for(var i in counties)
-				document.getElementById("countyFilter").innerHTML+='<option value="'+counties[i][0]+'">'+counties[i][1]+'</option>';
+			if(xmlhttp.readyState==4&&xmlhttp.status==200)
+				document.getElementById("countyFilter").innerHTML+=xmlhttp.responseText;
 		}
+		xmlhttp.open("GET","php/Countywide.php?s="+p1,false);
+		xmlhttp.send();
 	}
-	xmlhttp.open("GET","php/GetCounties.php?s="+p1,false);
-	xmlhttp.send();
-}countySelection();
+}countySelection("ALL");
 //array of badge objects and currently selected badge
 var badgeObj;
 var current;
