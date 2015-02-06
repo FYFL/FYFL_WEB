@@ -21,6 +21,16 @@ table{
     
 }
 
+.editButtonTable {
+	border-right-style: solid; 
+	border-right-width: 1px; 
+	border-right-color: #DDD; 
+	padding-left: 35px;
+ }
+  
+ .editButton{
+	color: black;
+ }
 
 .background {
 	position: fixed;
@@ -29,6 +39,11 @@ table{
 	background: -moz-radial-gradient(50% 50%, farthest-side, #fff, #efefef);
 	background: -webkit-gradient(radial, 50% 50%, 250, 50% 50%, 750, from(#fff), to(#bbb));
 	z-index: 0;
+}
+
+.imageSize {
+    width: 120px;
+    height: 120px;
 }
 
 .words{
@@ -153,8 +168,6 @@ a.nav-button:hover {
 	line-height:28px;
 }
 
-
-
 #odd{
 	width: 100%;
 	background-image:url(../images/greyback.png);
@@ -168,7 +181,6 @@ a.nav-button:hover {
 	padding-bottom: 75px;
 	
 }
-
 
 #glyph{
 	
@@ -193,4 +205,30 @@ a.nav-button:hover {
 	font-size:16px;
 }
 
+#spaceFormat{
+	float: right;
+}
+
+
+/*This portion was obtained from http://codepen.io/betdream/details/xuypA and modified slightly to fit personal needs.*/
+.wrap {
+  width: 90%;
+  max-width: 1000px;
+  margin: 5% auto 0;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 25px;
+}
+
+.wrap .avatar {
+  padding: 0;
+  
+  text-align: center;
+}
+.wrap .avatar .username {
+  background: rgba(100, 100, 100, 0.5);
+}
+.wrap .avatar img {
+  max-width: 100%;
+  padding: 0 0 5%;
+}
 

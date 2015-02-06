@@ -5,7 +5,7 @@ if(isset($_POST['submitted']))
 {
    if($fgmembersite->Login())
    {
-        $fgmembersite->RedirectToURL("http://www.fyflnetwork.org/4h/badges/source/badgeManager.php");
+        $fgmembersite->RedirectToURL("Admin/adminProfile.php");
    }
 }
 

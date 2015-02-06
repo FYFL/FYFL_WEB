@@ -280,7 +280,7 @@ function updateBadge(i)
 	'<div class="ribbon-wrapper"><div class="ribbon">Approved</div></div>';
 	document.getElementById(i).innerHTML+=
 	'\
-		<img src="http://www.fyflnetwork.org/4h/badges/source/php/displayImage?i='+badgeObj[i].image_id+'"/>\
+		<img src="php/displayImage?i='+badgeObj[i].image_id+'"/>\
 		<span class="badgetitle">'+badgeObj[i].badge_name+'</span>\
 		<span class="badgedescription">'+badgeObj[i].badge_desc+'</span>\
 		<span class="badgefooter"><a class="fancybox-manual-b" onclick="current='+i+';">Learn More or Edit</a></span>\
