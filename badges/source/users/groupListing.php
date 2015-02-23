@@ -56,7 +56,7 @@
 <body id="backgroundColor">
 
 <?php
-if($user_level==0){
+if($user_level>0){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
@@ -98,7 +98,7 @@ if($user_level==0){
 <?php } ?>
 
 <?php
-if($user_level>0){
+if($user_level==0){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
