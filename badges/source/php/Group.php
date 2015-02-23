@@ -7,7 +7,8 @@
 	{
 		global $dbc;
 		$q=mysqli_query($dbc,"SELECT id_user FROM membership WHERE id_group=".$groupID);
-		while($row=mysqli_fetch_array($q,MYSQLI_NUM))$users[]=$row[0];
+		$users=array();
+		while($row=mysqli_fetch_array($q,MYSQLI_NUM))$users[]=(int)$row[0];
 		return $users;
 	}
 /*
@@ -17,7 +18,8 @@
 	{
 		global $dbc;
 		$q=mysqli_query($dbc,"SELECT id_group FROM membership WHERE id_user=".$userID);
-		while($row=mysqli_fetch_array($q,MYSQLI_NUM))$groups[]=$row[0];
+		$groups=array();
+		while($row=mysqli_fetch_array($q,MYSQLI_NUM))$groups[]=(int)$row[0];
 		return $groups;
 	}
 /*
@@ -26,7 +28,9 @@
 	function getGroupInfo($groupID)
 	{
 		global $dbc;
-		return mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM groups WHERE id_group=".$groupID),MYSQLI_ASSOC);
+		$vars=mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM groups WHERE id_group=".$groupID),MYSQLI_ASSOC);
+		if($vars==null)return array();
+		return $vars;
 	}
 /*
  * Get a list of every group's info in a 2D array.
@@ -35,6 +39,7 @@
 	{
 		global $dbc;
 		$q=mysqli_query($dbc,"SELECT * FROM groups");
+		$groups=array();
 		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))$groups[]=$row;
 		return $groups;
 	}

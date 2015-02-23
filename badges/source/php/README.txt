@@ -48,6 +48,11 @@ Badges.php
 		$image the badge image should be a base64 encoded png.
 		returns an array of errors as strings.
 		NOTE: All parameters but state and county are required.
+		
+DisplayAvatar.php
+
+	Echoes the avatar for a given user ID.
+	example: <img src="DisplayAvatar.php?i=(user ID)">
 
 DisplayImage.php
 	
@@ -76,10 +81,12 @@ Group.php
 		$groupID a group ID number.
 		returns an array of a group's info:
 			$arr['name']
+			$arr['id_group']
 			
 	getGroups()
 		returns a 2D array of every group's info:
 			$arr[n]['name']
+			$arr[n]['id_group']
 			
 	pairUserToGroup($userID,$groupID)
 		$userID is a user ID.
@@ -126,6 +133,7 @@ User.php
 			$arr['Adult']
 			$arr['State']
 			$arr['County']
+			$arr['id_user']
 		
 	getUser()
 		returns an array of user info:
@@ -137,3 +145,11 @@ User.php
 			$arr['Adult']
 			$arr['State']
 			$arr['County']
+			$arr['id_user']
+			
+Utils.php
+
+	uploadImage($image)
+		$image from $_FILES with 'tmp_name', 'type', 'size', and 'error'
+		returns the contents of the file as a string
+		throws an ImageUploadException

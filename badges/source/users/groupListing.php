@@ -146,20 +146,19 @@ if($user_level>0){
                         <tbody>
                     <?php
                         $users = usersFromGroup($groupId);
+                        
                         foreach($users as $userId){
-                            if($userId != 0){
                             $user = userFromID($userId);
                     ?>
                             <tr>
-                                <td><!-- This needs to be a person's profile picture just a placeholder right now. --><img height="100" width="150" src="http://www.placehold.it/300x200&amp;text=Avatar" alt=""></td>
-                                <td><a><?php echo $user['name'].' '.$user['lname']; ?></a></td>
+                                <td><!-- This needs to be a person's profile picture just a placeholder right now. --><img height="50" width="75" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt=""></td>
+                                <td><a href="profile.php/?id=<?php echo $user['id_user']; ?>"><?php echo $user['name'].' '.$user['lname']; ?></a></td>
                             </tr>
 
-                    <?php }} ?>
+                    <?php } ?>
                         </tbody>
                     </table>
                 </div>
-
         </div>
     </div>
 </div>

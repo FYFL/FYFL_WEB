@@ -11,7 +11,9 @@
 		if(!$fgmembersite->CheckLogin())
 			return false;
 	//fetch the user info from the database
-		$vars=mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM people3 WHERE username='".$_SESSION[$fgmembersite->GetLoginSessionVar()]."'"),MYSQLI_ASSOC);
+		$vars=mysqli_fetch_array(mysqli_query($dbc,"SELECT username,name,lname,email,user_level,Adult,State,County,id_user FROM people3 WHERE username='".$_SESSION[$fgmembersite->GetLoginSessionVar()]."'"),MYSQLI_ASSOC);
+	//explicitly return an empty array instead of NULL
+		if($vars==NULL)return array();
 	//must manually typecast some values because mysql_query is dumb
 	//add user ids and typecast them.
 		$vars['County']=(int)$vars['County'];
@@ -22,12 +24,21 @@
 	function userFromID($userID)
 	{
 		global $dbc;
-		return mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM people3 WHERE id_user=".$userID),MYSQLI_ASSOC);
+	//mysqli_fetch_array() returns NULL if mysqli_query() returns NULL
+		$vars=mysqli_fetch_array(mysqli_query($dbc,"SELECT username,name,lname,email,user_level,Adult,State,County,id_user FROM people3 WHERE id_user=".$userID),MYSQLI_ASSOC);
+	//explicitly return an empty array instead of NULL
+		if($vars==NULL)return array();
+	//must manually typecast some values because mysql_query is dumb
+	//add user ids and typecast them.
+		$vars['County']=(int)$vars['County'];
+		$vars['user_level']=(int)$vars['user_level'];
+		$vars['Adult']=(int)$vars['Adult'];
+		return $vars;
 	}
 /*This script is for editing user info.
  *Returns false on failure.  Returns true on success.
  */
-	function editUser($name,$lname,$email,$state,$county)
+	function editUser($avatar,$name,$lname,$email,$state,$county)
 	{
 		global $dbc;
 		global $fgmembersite;
@@ -35,6 +46,7 @@
 		if(!$fgmembersite->CheckLogin())
 			return false;
 	//only update desired columns
+		if(!empty($avatar))$arr[]="avatar='".$avatar."'";
 		if(!empty($name))$arr[]="name='".$name."'";
 		if(!empty($lname))$arr[]="lname='".$lname."'";
 		if(!empty($email))$arr[]="email='".$email."'";
@@ -45,11 +57,11 @@
 		mysqli_query
 		(
 			$dbc,
-			"
+			'
 				UPDATE people3 SET
-				".implode(',',$arr)."
-				WHERE username='".$_SESSION[$fgmembersite->GetLoginSessionVar()]."'
-			"
+				'.implode(",",$arr).'
+				WHERE username="'.$_SESSION[$fgmembersite->GetLoginSessionVar()].'"
+			'
 		);
 		return true;
 	}

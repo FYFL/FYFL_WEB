@@ -30,8 +30,8 @@
 	}
 
 
-	if(isset($_POST["id"])){
-		$id = $_POST["id"];
+	if(isset($_GET["id"])){
+		$id = $_GET["id"];
 	}
 	else {
 		$id = "";
@@ -56,7 +56,7 @@
 <body id="backgroundColor">
 
 <?php
-if($user_level==0){
+if($user_level==1){
 ?>
 <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
   <div class="container">
@@ -98,7 +98,7 @@ if($user_level==0){
 <?php } ?>
 
 <?php
-if($user_level>0){
+if($user_level>1){
 	?>
 	<nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
 		<div class="container">
@@ -140,12 +140,39 @@ if($user_level>0){
 		<div class="wrap clearfix">
 			<div class="container-inner-sections ">
 				<div class="col-sm-4 col-xs-12 avatar">
-					<img src="http://www.placehold.it/300x200&amp;text=Avatar" alt="">
+					<img height="150" width="100" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt="">
 					<p class="username"><?php echo $firstName.' '.$lastName; ?></p>
 
 					<?php if($id=="" or $id==$userId){ ?>
 					<a>Edit Profile</a>
-					<?php } ?>
+					<?php }
+
+					else{
+						$user = userFromID($id);
+						if($user){
+							$username = $user['username'];
+							$firstName = $user['name'];
+							$lastName = $user['lname'];
+							$email = $user['email'];
+							$role = $user['Adult'];
+							$user_level = $user['user_level'];
+							$State = $user['State'];
+							$County = $user['County'];
+							$groups = groupsFromUser($id);
+						}
+						else{
+							$username = "Not Set";
+							$firstName = "Not Set";
+							$lastName = "Not Set";
+							$email = "Not Set";
+							$user_level = "Not Set";
+							$State = "Not Set";
+							$County = "Not Set";
+							$role = "Not Set";
+							$groups = "Not Set";
+						}
+					}
+					?>
 				</div>
 				<div class="col-sm-8 col-xs-12">    
 					<div class="col-xs-12 content">

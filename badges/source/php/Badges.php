@@ -70,10 +70,14 @@
 	{
 		global $dbc;
 		global $fgmembersite;
+	//store error messages here
+		$err=array();
 	//checking if user is logged in
 		if(!$fgmembersite->CheckLogin())
 			$err[]='User not logged in';
 	//find errors
+		if(empty($state)||strlen($state)!=2)
+			$err[]='state must be a two letter acronym';
 		if(empty($image))
 			$err[]='no image';
 		if(empty($badge_name))
@@ -108,13 +112,13 @@
 					VALUES
 					(
 						'".$state."',
-						'".$county."',
-						'".$category_id."',
+						'".(int)$county."',
+						'".(int)$category_id."',
 						'".mysqli_real_escape_string($dbc,base64_decode(substr($_POST['image'],strpos($_POST['image'],",")+1)))."',
 						'".mysqli_real_escape_string($dbc,$badge_desc)."',
 						'".mysqli_real_escape_string($dbc,$criteria)."',
 						'".mysqli_real_escape_string($dbc,$badge_name)."',
-						'".$issuer['id']."'
+						'".(int)$issuer['id']."'
 					)
 				"
 			);
@@ -139,7 +143,8 @@
 		$q=mysqli_query($dbc,"SELECT b.image_id FROM backpack b, people3 p WHERE p.id_user=b.id_user AND p.username='".$_SESSION[$fgmembersite->GetLoginSessionVar()]."'");
 		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))$IDs[]=$row['image_id'];
 		$q=mysqli_query($dbc,"SELECT image_id,badge_name,badge_desc FROM images3 WHERE image_id IN (".implode(',',$IDs).")");
-		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))$badges[]=$row;
+		$badges=array();
+		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))array_push($badges,$row);
 		return $badges;
 	}
 /*Returns all the badges that the user with the given userID owns.
@@ -150,7 +155,8 @@
 		$q=mysqli_query($dbc,"SELECT image_id FROM backpack WHERE id_user=".$userID);
 		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))$IDs[]=$row['image_id'];
 		$q=mysqli_query($dbc,"SELECT image_id,badge_name,badge_desc FROM images3 WHERE image_id IN (".implode(',',$IDs).")");
-		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))$badges[]=$row;
+		$badges=array();
+		while($row=mysqli_fetch_array($q,MYSQLI_ASSOC))array_push($badges,$row);
 		return $badges;
 	}
 ?>
