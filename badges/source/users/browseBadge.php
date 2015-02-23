@@ -42,7 +42,7 @@ if ($userInfo == false) {
 
 <body>
 <?php
-if($user_level!= "Not Set" and $user_level==0){
+if($user_level!= "Not Set" and $user_level>0){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
@@ -84,7 +84,7 @@ if($user_level!= "Not Set" and $user_level==0){
 <?php } ?>
 
 <?php
-if($user_level!= "Not Set" and $user_level==1){
+if($user_level!= "Not Set" and $user_level==0){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
@@ -141,12 +141,12 @@ if($user_level!= "Not Set" and $user_level==1){
         if($County == "Not Set" or $County == ""){
             $County = "";
         }
-        $badges = getBadges("", "", "", $State, $County);
+        $badges = getBadges();
         foreach ($badges as $currentBadge) {
             echo "<tr>";
             echo '<td class="editButtonTable"><a class="editButton" href="editBadge.php">Edit</a></td>';
             echo "<td>";
-            echo '<img class="imageSize img-responsive img-rounded" alt="Responsive image" src="../source/php/displayImage.php?i=' . $currentBadge['image_id'] . '">';
+            echo '<img class="imageSize img-responsive img-rounded" alt="Responsive image" src="../php/DisplayImage.php?i=' . $currentBadge['image_id'] . '">';
             echo "</td>";
             echo "<td>" . $currentBadge['badge_name'] . "</td>";
             echo "<td>" . $currentBadge['badge_desc'] . "</td>";
