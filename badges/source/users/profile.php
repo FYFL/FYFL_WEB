@@ -56,7 +56,7 @@
 <body id="backgroundColor">
 
 <?php
-if($user_level==1){
+if($user_level>0){
 ?>
 <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
   <div class="container">
@@ -98,7 +98,7 @@ if($user_level==1){
 <?php } ?>
 
 <?php
-if($user_level>1){
+if($user_level==0){
 	?>
 	<nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
 		<div class="container">
@@ -171,7 +171,7 @@ if($user_level>1){
 							$role = "Not Set";
 							$groups = "Not Set";
 						}
-					}
+					}$user_level = $user_level>0?"admin":"user";
 					?>
 				</div>
 				<div class="col-sm-8 col-xs-12">    
@@ -179,7 +179,7 @@ if($user_level>1){
 						<!--We can place information about a user here along with a link to a group.-->
 						<ul>
 							<li><div>Name:<span id="spaceFormat"><?php echo $firstName." ".$lastName; ?></span></div></li>
-							<li><div>Role:<span id="spaceFormat"><?php echo $role; ?></span></div></li>
+							<li><div>Role:<span id="spaceFormat"><?php echo $user_level; ?></span></div></li>
 							<li><div>Location:<span id="spaceFormat"><?php echo $County.", ".$State; ?></span></div></li>
 							<li><div>Email: <span id="spaceFormat"><?php echo $email; ?></span></div></li>
 							<?php if($groups != "Not Set" && !empty($groups)) { ?>
