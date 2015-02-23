@@ -71,7 +71,7 @@
 						<tr>
 <?php
 	foreach($badges as $badge)
-		echo"<td align='center'valign='center'width='150px'height='150px'><img width='100px'src='source/php/DisplayImage.php?i=".$badge['image_id']."'></td>";
+		echo"<td align='center'valign='center'width='150px'height='150px'><img width='100px'src='source/php/displayImage.php?i=".$badge['image_id']."'></td>";
 ?>
 						</tr>
 						<tr>
