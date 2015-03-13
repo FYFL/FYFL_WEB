@@ -56,7 +56,7 @@
 <body id="backgroundColor">
 
 <?php
-if($user_level==1){
+if($user_level==2){
 ?>
 <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
   <div class="container">
@@ -98,7 +98,7 @@ if($user_level==1){
 <?php } ?>
 
 <?php
-if($user_level>1){
+if($user_level>2){
 	?>
 	<nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
 		<div class="container">
@@ -140,11 +140,10 @@ if($user_level>1){
 		<div class="wrap clearfix">
 			<div class="container-inner-sections ">
 				<div class="col-sm-4 col-xs-12 avatar">
-					<img height="150" width="100" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt="">
-					<p class="username"><?php echo $firstName.' '.$lastName; ?></p>
-
 					<?php if($id=="" or $id==$userId){ ?>
-					<a>Edit Profile</a>
+						<img height="150" width="100" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt="">
+						<p class="username"><?php echo $firstName.' '.$lastName; ?></p>
+						<a href="/editProfile.php">Edit Profile</a>
 					<?php }
 
 					else{
@@ -170,7 +169,10 @@ if($user_level>1){
 							$County = "Not Set";
 							$role = "Not Set";
 							$groups = "Not Set";
-						}
+						} ?>
+						<img height="150" width="100" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt="">
+						<p class="username"><?php echo $firstName.' '.$lastName; ?></p>
+					<?php
 					}
 					?>
 				</div>
@@ -182,7 +184,7 @@ if($user_level>1){
 							<li><div>Role:<span id="spaceFormat"><?php echo $role; ?></span></div></li>
 							<li><div>Location:<span id="spaceFormat"><?php echo $County.", ".$State; ?></span></div></li>
 							<li><div>Email: <span id="spaceFormat"><?php echo $email; ?></span></div></li>
-							<?php if($groups != "Not Set" && !empty($groups)) { ?>
+							<?php if($groups != "Not Set" && !empty($groups) and ($id=="" or $id==$userId)) { ?>
 							<li>Groups:
 								<ul>
 								<?php

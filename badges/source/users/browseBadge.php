@@ -42,7 +42,7 @@ if ($userInfo == false) {
 
 <body>
 <?php
-if($user_level!= "Not Set" and $user_level==0){
+if($user_level!= "Not Set" and $user_level==2){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
@@ -84,7 +84,7 @@ if($user_level!= "Not Set" and $user_level==0){
 <?php } ?>
 
 <?php
-if($user_level!= "Not Set" and $user_level==1){
+if($user_level!= "Not Set" and $user_level>2){
     ?>
     <nav class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
         <div class="container">
@@ -125,7 +125,13 @@ if($user_level!= "Not Set" and $user_level==1){
     <table class="table table-responsive">
         <thead>
         <tr style="font-weight: bold">
-            <td></td>
+            <?php
+                if($user_level == 2) {
+                    ?>
+                    <td></td>
+                <?php
+                }
+            ?>
             <td>Badge Image</td>
             <td>Badge Name</td>
             <td>Badge Description</td>
@@ -144,7 +150,9 @@ if($user_level!= "Not Set" and $user_level==1){
         $badges = getBadges("", "", "", $State, $County);
         foreach ($badges as $currentBadge) {
             echo "<tr>";
-            echo '<td class="editButtonTable"><a class="editButton" href="editBadge.php">Edit</a></td>';
+            if($user_level==2) {
+                echo '<td class="editButtonTable"><a class="editButton" href="editBadge.php">Edit</a></td>';
+            }
             echo "<td>";
             echo '<img class="imageSize img-responsive img-rounded" alt="Responsive image" src="../source/php/displayImage.php?i=' . $currentBadge['image_id'] . '">';
             echo "</td>";
