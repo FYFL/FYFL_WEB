@@ -5,7 +5,7 @@ if(isset($_POST['submitted']))
 {
    if($fgmembersite->Login())
    {
-        $fgmembersite->RedirectToURL("Admin/adminProfile.php");
+        $fgmembersite->RedirectToURL("users/profile.php");
    }
 }
 
@@ -61,7 +61,7 @@ body{
 </div>
 
 <div id="noaccounts">
-<div style="position:absolute; left:80px; top:20px;width:250px; height:50px; text-align:center;">Don't have any of these accounts? <div><a href="#">Creat a 4-H account</a></div></div>
+<div style="position:absolute; left:80px; top:20px;width:250px; height:50px; text-align:center;">Don't have any of these accounts? <div><a href="../register.php">Creat a 4-H account</a></div></div>
 </div>
 
 <div style="text-align:center;">brought you by......</div>

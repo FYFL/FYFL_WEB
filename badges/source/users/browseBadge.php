@@ -66,7 +66,7 @@ if($user_level!= "Not Set" and $user_level==2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -101,7 +101,7 @@ if($user_level!= "Not Set" and $user_level>2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">

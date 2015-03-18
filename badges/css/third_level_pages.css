@@ -184,7 +184,19 @@ a.nav-button:hover {
 	line-height:28px;
 }
 
+.container-inner-sections {
+	border: 1px;
+	border-radius: 10px;
+	background-image:url(../images/greyback.png);
+}
 
+.container-right-sections {
+	border: 1px;
+	border-radius: 10px;
+	background-image:url(../images/greyback.png);
+	height: 350px;
+	position: fixed;
+}
 
 #odd{
 	width: 100%;

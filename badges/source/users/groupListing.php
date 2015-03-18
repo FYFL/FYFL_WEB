@@ -80,7 +80,7 @@ if($user_level==2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -115,7 +115,7 @@ if($user_level>2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -152,7 +152,7 @@ if($user_level>2){
                     ?>
                             <tr>
                                 <td><!-- This needs to be a person's profile picture just a placeholder right now. --><img height="50" width="75" src="../php/DisplayAvatar.php?i=<?php echo $userId; ?>" alt=""></td>
-                                <td><a href="profile.php/?id=<?php echo $user['id_user']; ?>"><?php echo $user['name'].' '.$user['lname']; ?></a></td>
+                                <td><a href="profile.php?id=<?php echo $user['id_user']; ?>"><?php echo $user['name'].' '.$user['lname']; ?></a></td>
                             </tr>
 
                     <?php } ?>

@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../php/Group.php');
 require_once(__DIR__ . '/../php/utils.php');
 
 if(isset($_POST['submit'])){
-    if($_POST['submit']=='y'){
+    if($_POST['submit']=='Upload'){
         if(isset($_POST['lastName'])){$lname = $_POST['lastName'];}
         else{$lname = "";}
         if(isset($_POST['firstName'])){$fname = $_POST['firstName'];}
@@ -12,10 +12,23 @@ if(isset($_POST['submit'])){
         if(isset($_POST['email'])){$userEmail = $_POST['email'];}
         else{$userEmail = "";}
 
-        editUser(uploadImage($_FILES["imgfile"]),$fname,$lname,$userEmail,"","");
+        if(isset($_FILES["imgfile"])) {
+            try{
+                editUser(uploadImage($_FILES["imgfile"]), $fname, $lname, $userEmail, "", "");
+            }
+            catch(ImageUploadException $e){
+                editUser("", $fname, $lname, $userEmail, "", "");
+            }
+        }
+        else{
+            editUser("", $fname, $lname, $userEmail, "", "");
+        }
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $extra = 'profile.php';
+        header("Location: http://$host$uri/$extra", true, 301);
+        exit;
 
-        header(__DIR__.'/profile.php');
-        die();
     }
 }
 
@@ -90,7 +103,7 @@ if($user_level==2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -125,7 +138,7 @@ if($user_level>2){
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
+                    <li><a href="profile.php" id="glyph" title="Profile"><span class="glyphicon glyphicon-user"></a></li>
                     <li class="dropdown">
                         <a href=""  title="Settings"  data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -161,7 +174,7 @@ if($user_level>2){
                             Last Name: <input name="lastName" type="text" value="<?php echo $lastName; ?>"/><br>
                             Email: <input name="email" type="email" value="<?php echo $email; ?>"/><br>
                             File name: <input class="btn btn-default" type="file" name="imgfile"/><br>
-                            <input class="btn btn-primary" type="submit" name="submit" value="y"/>
+                            <input class="btn btn-primary" type="submit" name="submit" value="Upload"/>
                         </form>
                     </div>
                 </div>
