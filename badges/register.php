@@ -54,8 +54,8 @@
         <!-- Major content needs to go in here.-->
         <div class="wrap clearfix">
             <div class="container-inner-sections ">
-                <div class="col-sm-8 col-xs-12">
-                    <div class="col-xs-12 content">
+                <div class="">
+                    <div class="content">
                         <!--We can place information about a user here along with a link to a group.-->
                         <form method="post" enctype="multipart/form-data">
                             First Name: <input name="firstName" type="text" placeholder="Type in your first name."/><br>
