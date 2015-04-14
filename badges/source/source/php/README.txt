@@ -1,2 +1,0 @@
-DisplayImage
-	displayImage()

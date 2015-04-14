@@ -1,0 +1,261 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: rocks;
+	src: url('https://www.fyflnetwork.org/4h/badges/font/Pacifico.ttf');
+}
+
+@font-face {
+	font-family: title;
+	src: url('https://www.fyflnetwork.org/4h/badges/font/CollegiateBlackFLF.ttf');
+}
+
+body{
+}
+
+h2{
+	font-family:rocks;
+}
+
+a{
+	text-decoration:none;
+}
+
+#header{
+	color:#000;
+	font-size:24px;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:70px;
+	background:#fff;
+	z-index:9;
+	border-bottom: 2px dashed #e8e8e8;
+	box-shadow: 0 0 0 3px #e8e8e8, 0 0 0 5px #fff, 0, 0 0 0px 10px #eee;	
+}
+
+#logo{
+	float:right;
+	margin-right:4%;
+}
+
+#headerlable{
+	position:absolute;
+	top:70px;
+	left:0px;
+	width:100%;
+	height:400px;
+	background:url(https://www.fyflnetwork.org/4h/badges/images/bg_top.png) no-repeat;
+	background-size: 100%;
+	z-index:-2;
+}
+
+#badgelogo{
+	width:510px;
+	height:510px;
+	background:url(https://www.fyflnetwork.org/4h/badges/images/badgeHand.png) no-repeat;
+	background-size:100%;
+	float:right;
+	margin: 0 10% 0 0;
+	margin-top:10px;
+}
+
+#headertitle{
+	font-family:title;
+	font-size:55px;
+	width:45%;
+	height:100px;
+	text-align:center;
+	margin:50px 0 50px 4%;
+}
+
+#middle{
+	position:absolute;
+	top:470px;
+	left:0px;
+	width:100%;
+	height: auto;
+	border-top: 2px dashed #e8e8e8;
+	box-shadow: 0 0 0 3px #e8e8e8, 0 0 0 5px #fff, 0 0 0 10px #e8e8e8, 0 0 2px 10px #eee;
+}
+
+#middlepic{
+	float:left;
+	width:40%;
+	text-align:center;
+	margin:100px 0 50px 5%;
+}
+
+#middlepic img {
+	width:100%;
+}
+
+#middletitle{
+	float:right;
+	font-family:rocks;
+	font-size:42px;
+	text-align:center;
+	margin:0px 0 30px -10px;
+}
+
+#middletext{
+	line-height:32px;
+	font-weight:bolder;
+	position: relative;
+	width: 40%;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:16pt;
+	float:right;
+	margin: 0 0 100px 0;
+	text-align:center;
+}
+
+#soon{
+	position:relative;
+	width:40%;
+	height:0px;
+	font-family:rocks;
+	font-size:32px;
+	margin-left:10%;
+	margin-bottom:50px;
+}
+
+#footer{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:13pt;
+	position:absolute;
+	top:0;
+	left:0px;
+	width:100%;
+	height:480px;
+	background-color:#E8E8E8;
+	border-top: 1px solid #ccc;
+	border: 2px dashed #fff;
+	box-shadow: 0 0 0 3px #e8e8e8, 0 0 0 5px #fff, 0 0 0 10px #e8e8e8, 0 0 2px 10px #eee;
+	
+}
+
+#footerleft{
+	width:40%;
+	float:left;
+	margin: 30px 5% 0 5%;
+	line-height:28px;
+	
+}
+
+#footerright{
+	width:40%;
+	float:left;
+	margin: 30px 5% 0 5%;
+	line-height:28px;
+}
+
+#buttom{
+	color:#666;
+	width:90%;
+	float:left;
+	margin: 10px 5% 0 5%;
+	padding:10px;
+	border-top: 2px dashed #FFF;
+}
+
+
+.ribbon-wrapper {
+  width: 145px;
+  height: 188px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 17px Sans-Serif;
+  color: #fff;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0px;
+  left: -45px;
+  top: 35px;
+  width: 250px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFB649), to(#FF6A00)); 
+  background-image: -webkit-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:    -moz-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:     -ms-linear-gradient(top, #FFB649, #FF6A00); 
+  background-image:      -o-linear-gradient(top, #FFB649, #FF6A00); 
+  color: #000;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon:before {
+  left: 0;
+}
+.ribbon:after {
+  right: 0;
+}
+
+.creatbutton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FFB649), color-stop(1, #FF6A00) );
+	background:-moz-linear-gradient( center top, #FFB649 5%, #FF6A00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB649', endColorstr='#FF6A00');
+	background-color:#FFB649;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:3px;
+	border:1px solid #FFB649;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:26px;
+	font-weight:bold;
+	font-style:normal;
+	height:50px;
+	width: 320px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0px 1px 0px #86ae47;
+	margin:10px 0 10px 15%;
+	
+}
+.creatbutton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FF6A00), color-stop(1, #FFB649) );
+	background:-moz-linear-gradient( center top, #FF6A00 5%, #FFB649 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A00', endColorstr='#FFB649');
+	background-color:#FF6A00;
+}
+.creatbutton:active {
+	position:relative;
+	top:1px;
+}
